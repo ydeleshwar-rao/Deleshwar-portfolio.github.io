@@ -3,11 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Deleshwar-portfolio.github.io/',
   plugins: [react()],
-   base: '/Deleshwar-portfolio.github.io/',
-  // server: {
-  //   allowedHosts: [
-  //    'determination-reduce-funky-genome.trycloudflare.com'
-  //   ]
-  // }
 })
