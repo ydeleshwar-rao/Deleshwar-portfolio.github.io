@@ -38,21 +38,26 @@ export default function WorkExperience() {
 
   return (
     <PageSection>
-      <div className="w-full min-h-screen">
-        {/* Header */}
-        <div className="text-center mb-16 lg:mb-24">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 mb-4">
-            Work Experience
-          </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"></div>
-        </div>
+      {/* Main container with proper containment */}
+      {/* <div className="min-w-[72rem] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative"> */}
+        <div className="w-full lg:min-w-[72rem] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+           {/* Header */}
+         <div className="text-center mb-16 lg:mb-24">
+           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 mb-4">
+             Work Experience
+           </h2>
+           <div className="w-32 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"></div>
+         </div>
+      </div>
 
-        {/* Experience Grid */}
-        <div className="w-full space-y-8 lg:space-y-12">
+    
+       {/* Experience Grid - Contained within PageSection */}
+        {/* <div className="w-full space-y-8 lg:space-y-12 relative"> */}
+        <div className="w-full max-w-full lg:max-w-none space-y-8 lg:space-y-12 relative px-4 lg:px-0">
           {workItems.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} // Reduced animation distance
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ 
@@ -63,24 +68,29 @@ export default function WorkExperience() {
               }}
               className="w-full"
             >
-              {/* Mobile & Tablet Design */}
-              <div className="block lg:hidden w-full">
-                <div className="relative w-full group cursor-pointer">
-                  {/* Main Card */}
-                  <div className="bg-cardColour backdrop-blur-md rounded-xl shadow-lg group-hover:shadow-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden">   
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-500/10 to-transparent rounded-full blur-2xl group-hover:scale-150 group-hover:from-blue-500/20 transition-all duration-700"></div>
+             
+             {/* Mobile & Tablet Design */}
+              {/* <div className="block lg:hidden w-full max-w-full "> */}
+              <div className="block lg:hidden w-full ">
+                <div className="relative  group cursor-pointer">
+                  {/* Main Card - Contained within parent */}
+                  <div className="bg-cardColour backdrop-blur-md rounded-xl shadow-lg group-hover:shadow-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden w-full">   
+      <div className="bg-cardColour backdrop-blur-md rounded-xl shadow-lg group-hover:shadow-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden w-full max-w-full"></div>
+                    {/* Background effect - contained */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-500/10 to-transparent rounded-full blur-2xl group-hover:scale-110 group-hover:from-blue-500/20 transition-all duration-700"></div>
                     
                     {/* Content */}
-                    <div className="relative z-10 p-6">
+                    {/* <div className="relative z-10 p-6 w-full"> */}
+                    <div className="relative z-10 p-4 sm:p-6 w-full max-w-full">
                       {/* Header - Always Visible */}
                       <div className="mb-4">
-                        <h1 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 mb-2">
+                        <h1 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 mb-2 break-words">
                           {item.title}
                         </h1>
                         
                         <div className="flex items-center gap-2 mb-2">
-                          <div className="w-1 h-1 bg-blue-500 rounded-full animate-pulse"></div>
-                          <p className="text-base font-semibold text-blue-400 group-hover:text-cyan-300 transition-colors duration-300">
+                          <div className="w-1 h-1 bg-blue-500 rounded-full animate-pulse flex-shrink-0"></div>
+                          <p className="text-base font-semibold text-blue-400 group-hover:text-cyan-300 transition-colors duration-300 break-words">
                             {item.company}
                           </p>
                         </div>
@@ -92,7 +102,7 @@ export default function WorkExperience() {
 
                       {/* Compact View - Default */}
                       <div className="group-hover:hidden transition-all duration-300">
-                        <p className="text-sm text-gray-300 leading-relaxed">
+                        <p className="text-sm text-gray-300 leading-relaxed break-words">
                           {truncateText(item.summary, 80)}
                         </p>
                         <div className="mt-3 flex items-center gap-2 text-blue-400">
@@ -107,7 +117,7 @@ export default function WorkExperience() {
 
                       {/* Expanded View - On Hover */}
                       <motion.div 
-                        className="hidden group-hover:block"
+                        className="hidden group-hover:block w-full max-w-full"
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         transition={{ duration: 0.5 }}
@@ -115,7 +125,7 @@ export default function WorkExperience() {
                         {/* Full Summary */}
                         <div className="mb-4">
                           <h3 className="text-sm font-semibold text-cyan-400 mb-2">Summary</h3>
-                          <p className="text-sm text-gray-300 leading-relaxed border-l-2 border-blue-500/30 pl-3 bg-blue-500/5 rounded-r py-2">
+                          <p className="text-sm text-gray-300 leading-relaxed border-l-2 border-blue-500/30 pl-3 bg-blue-500/5 rounded-r py-2 break-words">
                             {item.summary}
                           </p>
                         </div>
@@ -133,7 +143,7 @@ export default function WorkExperience() {
                                 className="flex items-start gap-2 p-2 rounded-md bg-white/5 hover:bg-white/10 transition-all duration-200"
                               >
                                 <div className="w-1 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                                <p className="text-xs text-gray-300 leading-relaxed">
+                                <p className="text-xs text-gray-300 leading-relaxed break-words">
                                   {point}
                                 </p>
                               </motion.div>
@@ -147,26 +157,26 @@ export default function WorkExperience() {
               </div>
 
               {/* Desktop Design */}
-              <div className="hidden lg:block w-full">
-                <div className={`flex w-full ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                  <div className="w-full max-w-4xl">
-                    <div className="relative group cursor-pointer">
-                      {/* Main Card */}
-                      <div className="bg-cardColour backdrop-blur-md rounded-xl shadow-lg group-hover:shadow-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden">   
-                        {/* Animated Background Pattern */}
-                        <div className={`absolute top-0 ${index % 2 === 0 ? 'right-0' : 'left-0'} w-48 h-48 bg-gradient-to-bl from-blue-500/10 to-transparent rounded-full blur-3xl group-hover:scale-150 group-hover:from-blue-500/20 transition-all duration-700`}></div>
+              <div className="hidden lg:block min-h-[300px] w-full ">
+               <div className="w-full flex justify-center">
+                  <div className="w-full max-w-6xl">
+                    <div className="relative group  cursor-pointer">
+                      {/* Main Card - Properly contained */}
+                     <div className="bg-cardColour backdrop-blur-md rounded-xl shadow-lg group-hover:shadow-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden w-full max-w-6xl mx-auto">
+                        {/* Animated Background Pattern - contained */}
+                        <div className={`absolute top-0 ${index % 2 === 0 ? 'right-0' : 'left-0'} w-32 h-32 bg-gradient-to-bl from-blue-500/10 to-transparent rounded-full blur-3xl group-hover:scale-110 group-hover:from-blue-500/20 transition-all duration-700`}></div>
                         
                         {/* Content */}
-                        <div className="relative z-10 p-8">
+                        <div className="relative z-10 p-8 w-full">
                           {/* Header - Always Visible */}
                           <div className="mb-6">
-                            <h1 className="text-2xl xl:text-3xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                            <h1 className="text-2xl xl:text-3xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300 break-words">
                               {item.title}
                             </h1>
                             
                             <div className="flex items-center gap-3 mb-2">
-                              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                              <p className="text-lg xl:text-xl font-semibold text-blue-400 group-hover:text-cyan-300 transition-colors duration-300">
+                              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse flex-shrink-0"></div>
+                              <p className="text-lg xl:text-xl font-semibold text-blue-400 group-hover:text-cyan-300 transition-colors duration-300 break-words">
                                 {item.company}
                               </p>
                             </div>
@@ -178,7 +188,7 @@ export default function WorkExperience() {
                           
                           {/* Compact View - Default */}
                           <div className="group-hover:hidden transition-all duration-300">
-                            <p className="text-base text-gray-300 leading-relaxed mb-4">
+                            <p className="text-base text-gray-300 leading-relaxed mb-4 break-words">
                               {truncateText(item.summary, 120)}
                             </p>
                             <div className="flex items-center gap-3 text-blue-400">
@@ -193,7 +203,7 @@ export default function WorkExperience() {
 
                           {/* Expanded View - On Hover */}
                           <motion.div 
-                            className="hidden group-hover:block"
+                            className="hidden group-hover:block w-full"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}
@@ -201,10 +211,10 @@ export default function WorkExperience() {
                             {/* Full Summary */}
                             <div className="mb-6">
                               <h3 className="text-lg font-semibold text-cyan-400 mb-3 flex items-center gap-2">
-                                <div className="w-1 h-6 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full"></div>
+                                <div className="w-1 h-6 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full flex-shrink-0"></div>
                                 Summary
                               </h3>
-                              <p className="text-base text-gray-300 leading-relaxed border-l-2 border-blue-500/30 pl-4 py-3 bg-blue-500/5 rounded-r-lg">
+                              <p className="text-base text-gray-300 leading-relaxed border-l-2 border-blue-500/30 pl-4 py-3 bg-blue-500/5 rounded-r-lg break-words">
                                 {item.summary}
                               </p>
                             </div>
@@ -212,20 +222,20 @@ export default function WorkExperience() {
                             {/* All Points Grid */}
                             <div>
                               <h3 className="text-lg font-semibold text-cyan-400 mb-4 flex items-center gap-2">
-                                <div className="w-1 h-6 bg-gradient-to-b from-purple-400 to-blue-500 rounded-full"></div>
+                                <div className="w-1 h-6 bg-gradient-to-b from-purple-400 to-blue-500 rounded-full flex-shrink-0"></div>
                                 Key Achievements
                               </h3>
-                              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
                                 {item.points.map((point, i) => (
                                   <motion.div
                                     key={i}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="flex items-start gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300 group/item"
+                                    className="flex items-start gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300 group/item w-full"
                                   >
                                     <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mt-2 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></div>
-                                    <p className="text-sm xl:text-base text-gray-300 leading-relaxed">
+                                    <p className="text-sm xl:text-base text-gray-300 leading-relaxed break-words">
                                       {point}
                                     </p>
                                   </motion.div>
@@ -237,12 +247,17 @@ export default function WorkExperience() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> 
+                {/* <div className="bg-red-500"><h1>hello</h1></div> */}
               </div>
             </motion.div>
           ))}
         </div>
-      </div>
+    
     </PageSection>
   );
 }
+
+
+
+ 
