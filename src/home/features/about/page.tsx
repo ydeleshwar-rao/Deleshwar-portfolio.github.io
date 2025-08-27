@@ -1,8 +1,8 @@
 import AnimatedCard from "../../components/UI/animated-card";
 import { motion } from "framer-motion";
 import PageSection from "../../components/UI/page-section";
-import { FaReact, FaNodeJs } from "react-icons/fa";
-import { SiMongodb, SiJavascript } from "react-icons/si";
+import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
+import { SiMongodb, SiJavascript, SiLangchain, SiPostgresql, SiPytorch } from "react-icons/si";
 import { useState } from "react";
 
 export default function AboutPage() {
@@ -117,7 +117,7 @@ export default function AboutPage() {
                                 onMouseEnter={() => setHoveredIcon(idx)}
                                 onMouseLeave={() => setHoveredIcon(null)}
                             >
-                                <AnimatedCard>
+                                <AnimatedCard width="w-[200px]" height="h-[200px]">
                                     <div className="flex h-full w-full items-center justify-center p-4">
                                         <div className="flex flex-col items-center justify-center gap-3 text-center">
                                             <div
@@ -177,6 +177,30 @@ const cards = [
     title: "JavaScript",
     text: "Core web language",
     icon: SiJavascript,
+    color: "#F7DF1E"
+  },
+   {
+    title: "PostgreSQL",
+    text: "SQL Database",
+    icon: SiPostgresql,
+    color: "#61DAFB"
+  },
+  {
+    title: "langchain",
+    text: "For AI-Retrieval-Augmented Generation",
+    icon: SiLangchain,
+    color: "#68A063"
+  },
+  {
+    title: "Python",
+    text: "For Ai Automation",
+    icon: FaPython,
+    color: "#3d57b3ff"
+  },
+  {
+    title: "Pytorch",
+    text: "Run LLm Models",
+    icon: SiPytorch,
     color: "#F7DF1E"
   }
 ];

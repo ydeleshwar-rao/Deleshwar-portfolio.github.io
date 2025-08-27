@@ -2,29 +2,67 @@ import { motion } from "framer-motion";
 import AnimatedCard from "../../components/UI/animated-card";
 import PageSection from "../../components/UI/page-section";
 import whatupLogo from "../../../styles/logos/whtup-extension.png";
-import aichataisstLogo from "../../../styles/logos/ai-chat-assitance.png";
-import aistorytellerLogo from "../../../styles/logos/ai-story-teller.png";
+import chatApp from "../../../styles/logos/chat-app.png";
+import aistorytellerLogo from "../../../styles/logos/chat-app.png";
+import aiChatAssitance from "../../../styles/logos/ai-chat-assitance.png";
+import apnaMart from "../../../styles/logos/apnamart.png";
 
 
 const workExpItems = [
   {
-    title: "AI ChatBot CRM",
+    title: "AI ChatApp Front-End",
     description:
-      "Developed a custom AI-powered CRM chatbot using React.js, LangChain, and ChatGPT APIs to manage client interactions and automate customer support workflows.",
-    githubLink: "https://github.com/ydeleshwar-rao/Ai-Chat-Bot",
+      "Developed a custom prompt AI-powered chat application with ai chat assitance using React.js, LangChain, and ChatGPT APIs to manage client interactions and automate customer support workflows.",
+    githubLink: "https://github.com/ydeleshwar-rao/full-stack-Ai-chatApp-fn",
     websiteLink: "http://www.ydelo.me/",
     linkedinProfileUrl: "https://www.linkedin.com/in/ydeleshwarrao/",
-    image:aichataisstLogo,
+    image:chatApp,
     hashtags: [
       { hashtagName: "React.js" },
       { hashtagName: "TypeScript" },
       { hashtagName: "LangChain" },
       { hashtagName: "ChatGPT LLM" },
       { hashtagName: "Tailwind CSS" },
-      { hashtagName: "Material UI" },
       { hashtagName: "Node.js" }
-    ]
+    ],
+    liveLink:"https://ydeleshwar-rao.github.io/full-stack-Ai-chatApp-fn/",
   },
+    {
+    title: "AI ChatApp Back-End",
+    description:
+      "Developed a custom prompt AI-powered chat application with ai chat assitance using Express.js, Passport.js, and ChatGPT APIs to manage client interactions and automate customer support workflows.",
+    githubLink: "https://github.com/ydeleshwar-rao/full-stack-Ai-chatApp-bk-end",
+    websiteLink: "http://www.ydelo.me/",
+    linkedinProfileUrl: "https://www.linkedin.com/in/ydeleshwarrao/",
+    image:aiChatAssitance,
+    hashtags: [
+      { hashtagName: "Node.js" },
+      { hashtagName: "Express.js" },
+      { hashtagName: "passport.js" },
+      { hashtagName: "ChatGPT LLM" },
+      { hashtagName: "TypeScrip" },
+      { hashtagName: "middelware.js" }
+    ],
+    liveLink:"https://dashboard.render.com/web/srv-d2m2t9n5r7bs73e93nfg",
+  },
+   {
+  title: "Apna Mart",
+  description:
+    "A multipurpose ecommerce platform built with React and TypeScript, featuring AI-powered chat assistance for seamless customer interactions, product browsing, and automated support workflows. Integrated with modern authentication and scalable backend APIs for a smooth shopping experience.",
+  githubLink: "https://github.com/ydeleshwar-rao/Apna-Mart",
+  websiteLink: "http://www.ydelo.me/",
+  linkedinProfileUrl: "https://www.linkedin.com/in/ydeleshwarrao/",
+  image: apnaMart,
+  hashtags: [
+    { hashtagName: "React" },
+    { hashtagName: "TypeScript" },
+    { hashtagName: "Ecommerce" },
+    { hashtagName: "AI Assistance" },
+    { hashtagName: "Node.js" },
+    { hashtagName: "Express.js" }
+  ],
+  liveLink: "https://lucky-monstera-a357f0.netlify.app",
+},
   {
     title: "Whatup Extenstion Connect",
     description:
@@ -39,7 +77,8 @@ const workExpItems = [
       { hashtagName: "Node" },
       { hashtagName: "NestJS" },
       { hashtagName: "Socket.IO" }
-    ]
+    ],
+    liveLink:"",
   },
   {
     title: "AI Story Teller",
@@ -55,7 +94,8 @@ const workExpItems = [
       { hashtagName: "OpenAI API" },
       { hashtagName: "Tailwind CSS" },
       { hashtagName: "Storytelling AI" }
-    ]
+    ],
+    liveLink:"",
   }
 ];
 
@@ -63,7 +103,7 @@ export default function WorkExpPage() {
     return (
        <PageSection>
              {/* Header Section - Responsive container */}
-             <div className="bg-cardColour backdrop-blur-md rounded-xl shadow-2xl p-4 sm:p-5 w-full max-w-6xl min-h-[30px] md:max-h-[600px] mx-auto border border-white/10">
+             <div className="bg-cardColour backdrop-blur-md rounded-xl shadow-2xl p-4 sm:p-5 w-full max-auto min-h-[30px] md:max-h-[600px] mx-auto border border-white/10">
 
                 <h4 className="text-indigo-400 text-sm font-semibold tracking-widest mb-2 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
                     My Work
@@ -79,7 +119,7 @@ export default function WorkExpPage() {
             </div>
 
         {/* Projects Grid - Mobile Responsive */}
-        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 justify-center items-center mt-6 sm:mt-10 px-4 sm:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center mt-6 sm:mt-10 px-4 sm:px-0">
          {workExpItems.map((card, idx) => (
         <motion.div
                 key={idx}
@@ -91,11 +131,11 @@ export default function WorkExpPage() {
                     {/* Mobile: Full width cards, Desktop: Fixed width cards */}
 
                          <AnimatedCard 
-              width="w-full sm:w-[388px]" 
+              width="w-full sm:w-[366px]" 
               height="h-auto sm:h-[330px]"
           >
               <div className="flex flex-col h-full p-0 m-0">
-                  <div className="mb-2 p-0 m-0">
+                  <div className=" mb-2 p-0 m-0">
                       <img
                           src={card.image || "https://avatars.githubusercontent.com/u/583231?v=4"}
                           alt={card.title}
@@ -105,11 +145,30 @@ export default function WorkExpPage() {
                                   window.open(card.githubLink, '_blank', 'noopener,noreferrer');
                               }
                           }}
+                          
                       />
+                          {/* Live button → deployed page open */}
+                            <button
+                                onClick={() => {
+                                  if (card.liveLink) {
+                                    window.open(card.liveLink, "_blank", "noopener,noreferrer");
+                                  }
+                                }}
+                                disabled={!card.liveLink} // disable if no liveLink
+                                className={`absolute bottom-2 right-2 px-4 py-1 rounded-lg text-sm font-medium transition
+                                  ${
+                                    card.liveLink
+                                      ? "text-green-500 border border-green-500 bg-transparent hover:bg-green-500 hover:text-white"
+                                      : "text-red-500 border border-red-500 bg-transparent cursor-not-allowed opacity-70"
+                                  }`}
+                              >
+                                {card.liveLink ? "Live" : "Not Live"}
+                              </button>
                   </div>
-
+                       
                   <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-white text-center">{card.title}</h2>
 
+                       
                   <p className="text-sm text-white/80 text-center mb-4 sm:mb-auto overflow-hidden leading-relaxed sm:text-ellipsis sm:line-clamp-1">
                       {card.description}
                   </p>
